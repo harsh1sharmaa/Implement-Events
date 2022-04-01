@@ -14,91 +14,91 @@ class LoginController extends Controller
         return '<h1>Hello!!!</h1>';
     }
 
-    // public function loginuserAction()
-    // {
+    public function loginuserAction()
+    {
 
-    //     // echo "hello";
-    //     // die();
+        // echo "hello";
+        // die();
 
-    //     $data = $this->request->getPost();
+        $data = $this->request->getPost();
 
-    //     if (isset($data['submit'])) {
+        if (isset($data['submit'])) {
 
-    //         // echo "hello";
+            // echo "hello";
 
-    //         // $adapter = new Stream(APP_PATH .'/log/login.log');
-    //         // $logger  = new Logger(
-    //         //     'messages',
-    //         //     [
-    //         //         'main' => $adapter,
-    //         //     ]
-    //         // );
-    //         $logger = $this->logger;
-    //         $myescap = new Myescaper();
-    //         $email = $myescap->sanitize($data['email']);
-    //         $password = $myescap->sanitize($data['password']);
+            // $adapter = new Stream(APP_PATH .'/log/login.log');
+            // $logger  = new Logger(
+            //     'messages',
+            //     [
+            //         'main' => $adapter,
+            //     ]
+            // );
+            $logger = $this->logger;
+            $myescap = new Myescaper();
+            $email = $myescap->sanitize($data['email']);
+            $password = $myescap->sanitize($data['password']);
 
-    //         // echo $email;
-    //         // echo $data['password'];
-    //         // die();
-    //         if ($email != 'harsh@sharma') {
-    //             $logger->error(' wrong email');
-    //         } elseif ($password != 'har123') {
-    //             $logger->error('wrong password');
-    //         } else {
-    //             $logger->error('log in');
-    //             $response = new Response();
+            // echo $email;
+            // echo $data['password'];
+            // die();
+            if ($email != 'harsh@sharma') {
+                $logger->error(' wrong email');
+            } elseif ($password != 'har123') {
+                $logger->error('wrong password');
+            } else {
+                $logger->error('log in');
+                $response = new Response();
 
-    //             $this->response->redirect('userdash/admindash');
-    //         }
-
-
-    //         // $logger = $this->logger;
-    //         // $logger->error('Something went wrong');
-    //         // die();
-    //     }
-    // }
+                $this->response->redirect('userdash/admindash');
+            }
 
 
-    // public function registerAction()
-    // {
+            // $logger = $this->logger;
+            // $logger->error('Something went wrong');
+            // die();
+        }
+    }
+
+
+    public function registerAction()
+    {
 
 
 
-    //     $data = $this->request->getPost();
-    //     if (isset($data['submit'])) {
+        $data = $this->request->getPost();
+        if (isset($data['submit'])) {
 
 
-    //         $logger = $this->logger2;
-    //         $myescap = new Myescaper();
-    //         $email = $myescap->sanitize($data['email']);
-    //         $name = $myescap->sanitize($data['name']);
-    //         $password = $myescap->sanitize($data['password']);
+            $logger = $this->logger2;
+            $myescap = new Myescaper();
+            $email = $myescap->sanitize($data['email']);
+            $name = $myescap->sanitize($data['name']);
+            $password = $myescap->sanitize($data['password']);
 
 
-    //         if ($name == '') {
-    //             $logger->error(' wrong name');
-    //         } elseif ($email == '') {
-    //             $logger->error(' wrong email');
-    //         } elseif ($password == '') {
-    //             $logger->error('wrong password');
-    //         } else {
-    //             $logger->error('register');
-    //         }
+            if ($name == '') {
+                $logger->error(' wrong name');
+            } elseif ($email == '') {
+                $logger->error(' wrong email');
+            } elseif ($password == '') {
+                $logger->error('wrong password');
+            } else {
+                $logger->error('register');
+            }
 
 
-    //         // $this->view->message = $data;
-    //         // print_r($input);
-    //         // die();
+            // $this->view->message = $data;
+            // print_r($input);
+            // die();
 
-    //         // $user = new Users();
+            // $user = new Users();
 
-    //         // $user->username = $input['username'];
-    //         // $user->password = $input['password'];
-    //         // $user->email = $input['email'];
-    //         // $user->save();
-    //     }
-    // }
+            // $user->username = $input['username'];
+            // $user->password = $input['password'];
+            // $user->email = $input['email'];
+            // $user->save();
+        }
+    }
 
     public function productaddAction()
     {
