@@ -163,14 +163,20 @@ $eventsManager->attach(
     new \App\Listeners\NotificationListeners()
 );
 
+$eventsManager->attach(
+    'application:beforeHandleRequest',
+    new \App\Listeners\NotificationListeners()
+);
+
 $container->set(
     'EventsManager',
     $eventsManager
 );
 
+
 $application = new Application($container);
 
-
+$application->setEventsManager($eventsManager);
 
 
 try {

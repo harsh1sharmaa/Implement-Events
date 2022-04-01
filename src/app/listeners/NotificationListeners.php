@@ -25,7 +25,7 @@ class NotificationListeners extends Injectable
             // die();
             $logger = $this->di->get('logger');
             $logger->info('default price set');
-            $product->price =$setting->Default_Price;
+            $product->price = $setting->Default_Price;
         }
         if ($product->stock == '') {
             $logger = $this->di->get('logger');
@@ -55,7 +55,7 @@ class NotificationListeners extends Injectable
             // die();
             $logger = $this->di->get('logger');
             $logger->info('default price set');
-            $order->Zipcode =$setting->default_zip;
+            $order->Zipcode = $setting->default_zip;
         }
         // if ($product->stock == '') {
         //     $logger = $this->di->get('logger');
@@ -73,5 +73,34 @@ class NotificationListeners extends Injectable
         // }
 
         return $order;
+    }
+
+    public function beforeHandleRequest(Event $event, \Phalcon\Mvc\Application $application)
+    {
+
+        // echo "fire";
+        // die();
+
+        $aclFile = APP_PATH . '/security/acl.cache';
+        if (true === is_readable($aclFile)) {
+
+            $acl = unserialize(
+                file_get_contents($aclFile)
+            );
+
+            $role = $this->request->getQuery('role');
+
+            if (!$role || true !== $acl->isAllowed($role, $this->router->getControllerName()??"acl", $this->router->getActionName()??"index")) {
+
+                echo "access denied";
+                die;
+            }
+        } else {
+            // echo "donr find acl";
+            // die();
+            // $response = new response();
+            
+            $this->response->redirect('secure/buildacl?redirect=1');
+        }
     }
 }
